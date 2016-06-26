@@ -1,0 +1,89 @@
+{% include "base.html" %}
+
+<!--
+{% load static %}
+<script type="text/javascript" src="{% static 'js/check.js' %}"></script> 
+-->
+
+<!DOCTYPE html
+<html>
+<title>Title Search</title>
+<head>
+<style>
+table.ex1 {
+    margin-left: 2cm;
+}
+</style>
+</head>
+<body>
+<br><br>
+<form method="POST" action="search/title_search/" >
+{% csrf_token %}
+{{ form.errors }}
+
+{% if messages %}
+	<ul>
+	{% for message in messages %}
+		<li>{{ message }}</li>
+	{% endfor %}
+	</ul>
+{% endif %}
+
+{% if form.errors %}
+	{% for field in form.fields %}
+		{% for error in field.errors %}
+			<div>field.label</div>
+			<strong>{{ error|escape }}</strong>
+		{% endfor %}
+	{% endfor %}
+	
+	{% for error in form.non_field.errors %}
+		<strong>error</strong>
+	{% endfor %}
+	
+{% else %}
+	<table class="ex1">
+	
+	
+	
+	<tr>
+		<td>Brand</td>
+		<!--
+		<td id="brand_help_id">{{ form.brand.help_text }}</td>
+		<td id="brand_label_id">{{ form.brand.label }}</td>
+		-->
+		<td id="brand_id">{{ form.brand }}</td>
+	</tr>
+	
+	<tr>
+		<td>Stock</td>
+		<!--
+		<td id="store_help_id">{{ form.store.help_text }}</td>
+		<td id="store_label_id">{{ form.store.label }}</td>
+		-->
+		<td id="store_id">{{ form.store }}</td>
+	</tr>
+	</table>
+	
+	<table class="ex1">
+	<tr>
+		<td>InStock</td>
+		{% for radio in form.in_stock %}
+			<td id="stock_id">{{ radio }}</td>
+		{% endfor %}
+	</tr>
+	
+	<tr>
+		<td><br></td>
+		<td>
+			<input type="submit" value="Submit" />	
+		</td>
+	</tr>
+	</table>
+
+</form>
+
+{% endif %}
+
+</body>
+</html>

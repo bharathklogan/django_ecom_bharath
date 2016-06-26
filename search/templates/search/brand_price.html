@@ -1,0 +1,31 @@
+{% include "base.html" %}
+
+<html>
+<title>Brands List</title>
+<h3>The Brands that are available for the price {{ price_range }} are given below</h3>
+<br>
+<body>
+<table cellspacing=5 cellpadding=5>
+	<tr>
+		<td>Brands</td>
+	</tr>
+	{% for brand in brands %}
+	<tr>
+		<td>{{ brand.brand }}</td>
+	</tr>
+	{% endfor %}
+</table>		
+
+<br><br><br><br><br><br><br><br><br><br>
+<b>NOTE</b>
+<p>This page satisfies the condition <br>
+
+
+SELECT brand FROM products WHERE price > 600 <br><br><br>
+
+
+I have given more options to choose instead of only >600
+</p>
+
+</body>
+</html>

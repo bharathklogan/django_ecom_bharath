@@ -1,0 +1,50 @@
+{% include "base.html" %}
+
+<!DOCTYPE html
+<html>
+<title>Maximum Product</title>
+<h3>The maximum price is {{ Maximum_Product.price }} and its product details is given below</h3>
+<br>
+<head>
+<!--
+<script>
+alert('{{ Message }}, is {{ Maximum_Price }}' );
+</script>
+-->
+</head>
+<body>
+<table cellspacing=5 cellpadding=5>
+	<tr>
+		<td>Title</td>
+		<td>Brand</td>
+		<td>Store</td>
+		<td>Price</td>
+		<td>In Stock</td>
+	</tr>
+	<tr>
+	    <td>{{ Maximum_Product.title }}</td>
+	    <td>{{ Maximum_Product.brand }}</td>
+	    <td>{{ Maximum_Product.store }}</td>
+	    <td><bold>{{ Maximum_Product.price }}</bold></td>
+	    <td>{{ Maximum_Product.in_stock }}</td>
+    </tr>
+</table>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<b>NOTE</b>
+<p>This page satisfies the condition <br>
+
+
+SELECT MAX(price) FROM products <br>
+
+MAX(price)<br>
+1099.99<br><br><br>
+
+I have displayed the entire product details instead of price alone.
+</p>
+<!--
+{% for i,v in Maximum_Price.items %}
+    <p>Maixmum price is {{ v }} </p>
+{% endfor %}
+-->
+</body>
+</html>

@@ -1,0 +1,95 @@
+{% include "base.html" %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<title>Title Search</title>
+<head>
+<link rel="stylesheet" href="{% static 'search/css/search.css' %}" />
+</head>
+<body>
+<br><br>
+<body>
+<form method="post" action="/search/title_search/">
+   {% csrf_token %}
+
+
+{% if form.errors %}
+	{% for field in form.fields %}
+		{% for error in field.errors %}
+			<div>field.label</div>
+			<strong>{{ error|escape }}</strong>
+		{% endfor %}
+	{% endfor %}
+	
+	{% for error in form.non_field.errors %}
+		<strong>error</strong>
+	{% endfor %}   
+  
+{% endif %}
+{% if messages %}
+	<ul>
+	{% for message in messages %}
+		<li>{{ message }}</li>
+	{% endfor %}
+	</ul>
+{% endif %}
+   <table class="ex1">
+	
+	
+	
+	<tr>
+		<td>Brand</td>
+		<!--
+		<td id="brand_help_id">{{ form.brand.help_text }}</td>
+		<td id="brand_label_id">{{ form.brand.label }}</td>
+		-->
+		<td id="brand_id">{{ form.brand }}</td>
+		<td><p style="color:red;">*</p></td>
+	</tr>
+	
+	<tr>
+		<td>Store</td>
+		<!--
+		<td id="store_help_id">{{ form.store.help_text }}</td>
+		<td id="store_label_id">{{ form.store.label }}</td>
+		-->
+		<td id="store_id">{{ form.store }}</td>
+	</tr>
+	</table>
+	
+	<table class="ex1">
+	<tr>
+		<td>InStock</td>
+		{% for radio in form.in_stock %}
+			<td id="stock_id">{{ radio }}</td>
+		{% endfor %}
+		<td><p style="color:red;">*</p></td>
+
+	</tr>
+	
+	<tr>
+		<td><br></td>
+		<td>
+			<input type="submit" value="Submit" />	
+		</td>
+	</tr>
+	</table>
+
+</form>
+
+<br><br>
+<p>Fields marked with <a style="color:red;"/>*</a> are mandatory</p>
+
+
+<br><br><br><br><br><br><br><br><br><br>
+<b>NOTE</b>
+<p>This page satisfies the last 2 conditions <br><br><br>
+
+SELECT title FROM products WHERE in_stock=false AND brand=5<br>
+SELECT title FROM products WHERE in_stock=false AND ( brand=5 OR store=2 ) 
+<br>
+
+
+</body>
+</html>

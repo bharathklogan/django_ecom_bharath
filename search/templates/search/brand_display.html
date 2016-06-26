@@ -1,0 +1,15 @@
+{% include "base.html" %}
+
+<!DOCTYPE html>
+<html>
+<title>Brands Price</title>
+<h3>To get the brands based upon price, please select price range below</h3>
+<br>
+<body>
+<form method="post" action="/search/brand_display/">
+   {% csrf_token %}
+   {{ form }}
+   <input type="submit" value="Get Brands" />
+</form>
+</body>
+</html>

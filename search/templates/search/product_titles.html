@@ -1,0 +1,23 @@
+{% include "base.html" %}
+{% load staticfiles %}
+
+<!DOCTYPE html
+<html>
+<title>Product Titles</title>
+<h3>Displays the list of titles</h3>
+<head>
+<link rel='stylesheet' href="{% static 'search/css/search.css' %}"/>
+
+<body>
+<table class="ex1">
+	<tr>
+		<td>Titles</td>
+	</tr>
+	{% for title in titles %}
+	<tr>
+		<td>{{ title.title }}</td>
+	</tr>
+	{% endfor %}
+</table>
+</body>
+</html>

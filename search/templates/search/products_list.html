@@ -1,0 +1,29 @@
+{% include "base.html" %}
+
+<!DOCTYPE html>
+<html>
+<title> Products List</title>
+<h3>Products List </h3>
+<body>
+<table cellspacing=5 cellpadding=5>
+	<tr>
+		<td>Title</td>
+		<td>Brand</td>
+		<td>Store</td>
+		<td>Price</td>
+		<td>In Stock</td>
+	</tr>
+    {% for product in Products_list %}
+	<tr>
+	    <td>{{ product.title }}</td>
+	    <td>{{ product.brand }}</td>
+	    <td>{{ product.store }}</td>
+	    <td>{{ product.price }}</td>
+	    <td>{{ product.in_stock }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<!-- <a href="/search/max"><button >Click Here to get the Maximum Priced Product</button></a> -->
+</body>
+</html>

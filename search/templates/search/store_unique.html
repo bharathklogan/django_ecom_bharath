@@ -1,0 +1,44 @@
+{% include "base.html" %}
+{% load staticfiles %}
+<!DOCTYPE html
+<html>
+<title>Unique Stores</title>
+<head>
+<link rel="stylesheet" href="{% static 'search/css/search.css' %}" />
+</head>
+<h3>The Unique list of stores which are not in stock(in_stoc=False) are given below</h3>
+<body>
+<table class="ex1">
+	<tr>
+		<td><b>Stores<b></td>
+	</tr>
+	{% for stor in stores %}
+		
+		<tr>
+			<td><a href="{% url 'store_details' stor.store%}"/>Store-{{ stor.store }}</a></td>
+
+		</tr>
+	{% endfor %}
+	
+</table>
+</body>
+
+
+<br><br><br><br><br><br><br><br>
+<b>NOTE</b>
+<p>This page satisfies the condition <br><br><br>
+
+SELECT UNIQ(store) FROM products WHERE in_stock=false<br><br>
+
+UNIQ(store)<br>
+1<br>
+2<br>
+5<br>
+6<br>
+7<br>
+
+<b>Value 4 is also coming because, product title="Apple iPhone 5" has in_stock=False. Row Data => "Apple iPhone 5	2	4	549.99	FALSE".</b></p><br>
+
+
+
+</html>

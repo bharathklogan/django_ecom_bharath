@@ -1,0 +1,30 @@
+{% include "base.html" %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<title>Stores Display</title>
+<head>
+<link rel="stylesheet" href="{% static 'search/css/search.css' %}" />
+</head>
+<h3>To get the product details based on stores, click any store values listed below.</h3>
+<body>
+<table class="ex1">
+	<tr>
+		<td><b>Stores<b></td>
+	</tr>
+	{% for stor in stores %}
+		
+		<tr>
+			<td><a href="{% url 'store_details' stor.store%}"/>Store-{{ stor.store }}</a></td>
+
+		</tr>
+	{% endfor %}
+	
+</table>
+</body>
+<div style="text-align: right">
+
+<h3><a href={% url 'store_unique' %}>To get the stores list which are not in stock(in_stock=False). Click Here</a></h3>
+</div>
+
+</html>
