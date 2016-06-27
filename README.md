@@ -1,2 +1,2 @@
 # bhk_search
-Django App developed for interview purpose and it cannot be used anywhere.
+Is a Django App developed for specific purpose of solving a challenge given in the README.rst under "Problem" section, therefore this app cannot be used anywhere.
